@@ -1,3 +1,5 @@
+# Perguntas respondidas em Python
+
 # Pergunta 2
 numero = int(input("Digite um número inteiro: "))
 
