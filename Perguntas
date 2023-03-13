@@ -1,0 +1,78 @@
+# Pergunta 2
+numero = int(input("Digite um número inteiro: "))
+
+fibonacci = [0, 1]
+
+while fibonacci[-1] < numero:
+    novo_valor = fibonacci[-1] + fibonacci[-2]
+    fibonacci.append(novo_valor)
+
+if numero in fibonacci:
+    print(numero, "pertence à sequência de Fibonacci")
+else:
+    print(numero, "não pertence à sequência de Fibonacci")
+
+
+
+
+# Pergunta 3
+import json
+from statistics import mean
+
+with open('faturamento.json', 'r') as file:
+    faturamento = json.load(file)
+
+menor_valor = min(faturamento.values())
+maior_valor = max(faturamento.values())
+
+faturamento_sem_zero = [valor for valor in faturamento.values() if valor > 0]
+media_faturamento = mean(faturamento_sem_zero)
+
+dias_acima_media = sum(1 for valor in faturamento.values() if valor > media_faturamento)
+
+print("Menor valor de faturamento diário:", menor_valor)
+print("Maior valor de faturamento diário:", maior_valor)
+print("Número de dias com faturamento acima da média:", dias_acima_media)
+
+
+
+# Pergunta 4
+
+faturamento_estados = {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outros": 19849.53
+}
+
+faturamento_total = sum(faturamento_estados.values())
+
+percentuais = {}
+for estado, faturamento in faturamento_estados.items():
+    percentuais[estado] = (faturamento / faturamento_total) * 100
+    
+for estado, percentual in percentuais.items():
+    print(f"{estado}: {percentual:.2f}%")
+
+
+
+# Pergunta 5
+
+string = "Exemplo de string"
+
+lista_caracteres = list(string)
+
+i = 0
+j = len(lista_caracteres) - 1
+
+while i < j:
+    temp = lista_caracteres[i]
+    lista_caracteres[i] = lista_caracteres[j]
+    lista_caracteres[j] = temp
+    i += 1
+    j -= 1
+
+string_invertida = "".join(lista_caracteres)
+
+print(string_invertida)
